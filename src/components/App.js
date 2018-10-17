@@ -43,9 +43,7 @@ class App extends React.Component {
     // add new fish
     fishes[`fish${Date.now()}`] = fish;
     // set the new fishes object to state
-    this.setState({
-      fishes,
-    });
+    this.setState({ fishes });
   };
 
   updateFish = (key, updatedFish) => {
@@ -53,9 +51,14 @@ class App extends React.Component {
     const fishes = { ...this.state.fishes };
     // update that state
     fishes[key] = updatedFish;
-    this.setState({
-      fishes,
-    });
+    this.setState({ fishes });
+  };
+
+  deleteFish = key => {
+    const fishes = { ...this.state.fishes };
+    // we need to set it to null because firebase
+    fishes[key] = null;
+    this.setState({ fishes });
   };
 
   loadSampleFishes = () => {
@@ -65,6 +68,12 @@ class App extends React.Component {
   addToOrder = key => {
     const order = { ...this.state.order };
     order[key] = order[key] + 1 || 1;
+    this.setState({ order });
+  };
+
+  deleteFromOrder = key => {
+    const order = { ...this.state.order };
+    delete order[key];
     this.setState({ order });
   };
 
@@ -84,10 +93,15 @@ class App extends React.Component {
             ))}
           </ul>
         </div>
-        <Order fishes={this.state.fishes} order={this.state.order} />
+        <Order
+          fishes={this.state.fishes}
+          order={this.state.order}
+          deleteFromOrder={this.deleteFromOrder}
+        />
         <Inventory
           addFish={this.addFish}
           updateFish={this.updateFish}
+          deleteFish={this.deleteFish}
           loadSampleFishes={this.loadSampleFishes}
           fishes={this.state.fishes}
         />
