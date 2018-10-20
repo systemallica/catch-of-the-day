@@ -8,7 +8,7 @@ class StorePicker extends React.Component {
     // avoid reloading the page
     event.preventDefault();
     // get input value
-    const storeName = this.myInput.value.value;
+    const storeName = this.myInput.current.value;
     // use the router props to change url and load App component
     this.props.history.push(`/store/${storeName}`);
   };

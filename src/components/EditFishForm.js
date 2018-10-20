@@ -16,7 +16,6 @@ class EditFishForm extends React.Component {
   };
 
   handleChange = event => {
-    console.log(event.currentTarget.value);
     // copy the contents of fish
     // override the property that changed
     const updatedFish = {

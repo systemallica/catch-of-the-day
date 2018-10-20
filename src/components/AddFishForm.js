@@ -18,11 +18,11 @@ class AddFishForm extends React.Component {
 
     // create fish object with form data
     const fish = {
-      name: this.nameRef.value.value,
-      price: parseFloat(this.priceRef.value.value),
-      status: this.statusRef.value.val,
-      desc: this.descRef.value.value,
-      image: this.imageRef.value.value,
+      name: this.nameRef.current.value,
+      price: parseFloat(this.priceRef.current.value),
+      status: this.statusRef.current.value,
+      desc: this.descRef.current.value,
+      image: this.imageRef.current.value,
     };
 
     // call the state function passed as a prop
