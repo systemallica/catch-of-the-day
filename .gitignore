@@ -2,3 +2,9 @@
 /build
 package-lock.json
 \.netlify/
+
+firebase\.json
+
+\.firebaserc
+
+\.firebase/
